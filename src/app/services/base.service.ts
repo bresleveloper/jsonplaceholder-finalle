@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class BaseService<T> {
 
 
-  private dataSubject:BehaviorSubject<T[]> = new BehaviorSubject<T[]>([])
+  protected dataSubject:BehaviorSubject<T[]> = new BehaviorSubject<T[]>([])
   data:Observable<T[]> = this.dataSubject.asObservable()
 
   constructor(private http:HttpClient, private api:string) {

@@ -1,1 +1,21 @@
-<p>posts works!</p>
+
+
+
+
+<mat-accordion *ngIf="usersArrived">
+    <mat-expansion-panel *ngFor="let p of posts.data | async">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{p.title}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{ users.getFullNameById(p.userId) }}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <app-post [post]="p"></app-post>
+
+    </mat-expansion-panel>
+    
+</mat-accordion>
+      

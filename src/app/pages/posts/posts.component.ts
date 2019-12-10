@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from 'src/app/services/posts.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-posts',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  usersArrived:boolean = false
+  constructor(public posts:PostsService, public users:UsersService) {
+    this.users.data.subscribe(users => {
+      if (users && users.length > 0) {
+        this.usersArrived = true
+      }
+    })
+  }
 
   ngOnInit() {
   }

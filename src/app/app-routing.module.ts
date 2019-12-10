@@ -8,8 +8,8 @@ import { PostsComponent } from './pages/posts/posts.component';
 
 const routes: Routes = [
 
-  { path: '/', component:HomeComponent, data:{title:'Home Page'}},
-  { path: '/posts', component:PostsComponent, data:{title:'Posts'}},
+  { path: '', component:HomeComponent, data:{title:'Home Page'}},
+  { path: 'posts', component:PostsComponent, data:{title:'Posts'}},
 
 
 
