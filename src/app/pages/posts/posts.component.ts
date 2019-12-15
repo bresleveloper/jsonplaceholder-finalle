@@ -11,7 +11,10 @@ export class PostsComponent implements OnInit {
 
   usersArrived:boolean = false
   constructor(public posts:PostsService, public users:UsersService) {
+    console.log('PostsComponent constructor');
+    
     this.users.data.subscribe(users => {
+      console.log('i did subscribe for users');
       if (users && users.length > 0) {
         this.usersArrived = true
       }

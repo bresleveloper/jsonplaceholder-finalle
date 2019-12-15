@@ -9,10 +9,13 @@ export class BaseService<T> {
   data:Observable<T[]> = this.dataSubject.asObservable()
 
   constructor(private http:HttpClient, private api:string) {
+    console.log('BaseService ctor start for api of ' + api);
     
     this.api = "https://jsonplaceholder.typicode.com/" + this.api
-    this.http.get<T[]>(this.api).subscribe(arr => this.dataSubject.next(arr))
-
+    this.http.get<T[]>(this.api).subscribe(arr => {
+      console.log('data arrived for api of ' + api);
+      this.dataSubject.next(arr)
+    })
   }
 
   addNewItem(item:T){

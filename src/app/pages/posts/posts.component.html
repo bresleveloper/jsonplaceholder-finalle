@@ -1,6 +1,10 @@
 
 
+<app-users-counter></app-users-counter>
 
+<button mat-raised-button color="primary" routerLink="/add-posts">
+    Add New Post
+</button>
 
 <mat-accordion *ngIf="usersArrived">
     <mat-expansion-panel *ngFor="let p of posts.data | async">

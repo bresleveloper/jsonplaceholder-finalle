@@ -1,0 +1,24 @@
+
+
+<form class="example-container" [formGroup]="postForm" (ngSubmit)="AddPost()">
+    <mat-form-field>
+        <mat-select placeholder="Select User" formControlName="userId">
+            <mat-option *ngFor="let u of users.data | async" 
+                [value]="u.id" >
+                {{ u.username }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input formControlName="title" matInput placeholder="Post Title">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <textarea formControlName="body" matInput placeholder="Post Body"></textarea>
+    </mat-form-field>
+    <br>
+    <button type="submit">
+        Add New Post
+    </button>
+</form>
