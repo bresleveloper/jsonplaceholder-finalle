@@ -17,6 +17,8 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { PostComponent } from './comps/post/post.component';
 import { UsersCounterComponent } from './comps/users-counter/users-counter.component';
 import { AddPostComponent } from './forms/add-post/add-post.component';
+import { FilterByFieldPipe } from './pipes/filter-by-field.pipe';
+import { DebounceDistinctDirective } from './dirs/debounce-distinct.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AddPostComponent } from './forms/add-post/add-post.component';
     PostsComponent,
     PostComponent,
     UsersCounterComponent,
-    AddPostComponent
+    AddPostComponent,
+    FilterByFieldPipe,
+    DebounceDistinctDirective
   ],
   imports: [
     BrowserModule,

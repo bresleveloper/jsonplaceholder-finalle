@@ -2,3 +2,17 @@
     width: 50%;
     margin: 16px;
 }
+
+
+
+.head-parts{
+    justify-content: flex-end;
+    width: 80%;
+    margin-top: -21px;
+    height: 20px;
+}
+
+::ng-deep  .mat-form-field {
+    padding: 15px;
+    padding-bottom: 0;
+}

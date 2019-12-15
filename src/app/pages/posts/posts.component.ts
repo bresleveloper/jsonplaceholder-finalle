@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/services/posts.service';
 import { UsersService } from 'src/app/services/users.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { PostSearch } from 'src/app/model/post-search';
 
 @Component({
   selector: 'app-posts',
@@ -10,6 +14,8 @@ import { UsersService } from 'src/app/services/users.service';
 export class PostsComponent implements OnInit {
 
   usersArrived:boolean = false
+  search:PostSearch = new PostSearch()
+
   constructor(public posts:PostsService, public users:UsersService) {
     console.log('PostsComponent constructor');
     
@@ -21,7 +27,7 @@ export class PostsComponent implements OnInit {
     })
   }
 
+
   ngOnInit() {
   }
-
 }

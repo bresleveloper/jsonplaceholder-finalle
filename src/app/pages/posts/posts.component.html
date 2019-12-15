@@ -1,13 +1,30 @@
 
 
-<app-users-counter></app-users-counter>
+<div class="flex head-parts">
+    <div class="flex-col">
+        <app-users-counter></app-users-counter>
+        <button class="add-post-btn" mat-raised-button color="primary" routerLink="/add-posts">
+            Add New Post
+        </button>
+    </div>
+</div>
 
-<button mat-raised-button color="primary" routerLink="/add-posts">
-    Add New Post
-</button>
+<div class="filters">
+    <mat-form-field>
+        <input [(debounceDistinct)]="search.title" matInput placeholder="Title">
+    </mat-form-field>
+    <mat-form-field>
+        <input [(debounceDistinct)]="search.body" matInput placeholder="Body">
+    </mat-form-field>
+</div>
 
 <mat-accordion *ngIf="usersArrived">
-    <mat-expansion-panel *ngFor="let p of posts.data | async">
+    <mat-expansion-panel 
+        *ngFor="let p of posts.data 
+        | async 
+        | filterField : 'title' : search.title
+        | filterField : 'body' : search.body">
+
         <mat-expansion-panel-header>
             <mat-panel-title>
                 {{p.title}}
