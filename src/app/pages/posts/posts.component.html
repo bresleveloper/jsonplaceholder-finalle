@@ -11,12 +11,28 @@
 
 <div class="filters">
     <mat-form-field>
-        <input [(debounceDistinct)]="search.title" matInput placeholder="Title">
+        <input [(debounceDistinct)]="search.title" 
+            [value]="search.title"
+            matInput placeholder="Title">
     </mat-form-field>
     <mat-form-field>
-        <input [(debounceDistinct)]="search.body" matInput placeholder="Body">
+        <input [(debounceDistinct)]="search.body" 
+            [value]="search.body"
+            matInput placeholder="Body">
     </mat-form-field>
 </div>
+
+<app-super-filters
+    [(filterOne)]="search.title" phOne="Title"
+    [(filterTwo)]="search.body"  phTwo="Body">
+</app-super-filters>
+
+&nbsp;&nbsp;&nbsp;
+search.title: {{search.title}} 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+search.body: {{search.body}}
+<br>
+<br>
 
 <mat-accordion *ngIf="usersArrived">
     <mat-expansion-panel 

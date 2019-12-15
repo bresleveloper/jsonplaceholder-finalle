@@ -9,8 +9,8 @@ import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 export class DebounceDistinctDirective 
   implements OnInit, OnDestroy {
 
-
-
+  @Input() outerOutput:EventEmitter<string>
+    
   @Input() debounceDistinct:string
   @Output() debounceDistinctChange:EventEmitter<string> = 
     new EventEmitter<string>()
@@ -28,9 +28,13 @@ export class DebounceDistinctDirective
       debounceTime(600),
       distinctUntilChanged(),
       tap(val => console.log('debounceDistinct', val))
-    ).subscribe(val => 
+    ).subscribe(val => {
       this.debounceDistinctChange.emit(val)
-    )
+      if (this.outerOutput) {
+        console.log('this.outerOutput ');
+        this.outerOutput.emit(val)
+      }
+    })
   }
 
   ngOnDestroy(): void {

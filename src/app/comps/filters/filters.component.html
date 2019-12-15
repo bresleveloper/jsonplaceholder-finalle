@@ -1,0 +1,32 @@
+
+
+
+<div class="filters">
+    <mat-form-field *ngIf="phOne">
+        <input matInput [placeholder]="phOne"
+            [value]="filterOne"
+            [outerOutput]="filterOneChange"
+            [(debounceDistinct)]="filterOne">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="phTwo">
+        <input matInput [placeholder]="phTwo"
+            [value]="filterTwo"
+            [outerOutput]="filterTwoChange"
+            [(debounceDistinct)]="filterTwo" >
+    </mat-form-field>
+
+    <mat-form-field *ngIf="phThree">
+        <input  matInput [placeholder]="phThree"
+            [value]="filterThree"
+            [outerOutput]="filterThreeChange"
+            [(debounceDistinct)]="filterThree">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="phFour">
+        <input matInput [placeholder]="phFour"
+            [value]="filterFour"
+            [outerOutput]="filterFourChange"
+            [(debounceDistinct)]="filterFour" >
+    </mat-form-field>
+</div>

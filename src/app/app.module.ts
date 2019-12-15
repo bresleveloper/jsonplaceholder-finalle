@@ -19,6 +19,7 @@ import { UsersCounterComponent } from './comps/users-counter/users-counter.compo
 import { AddPostComponent } from './forms/add-post/add-post.component';
 import { FilterByFieldPipe } from './pipes/filter-by-field.pipe';
 import { DebounceDistinctDirective } from './dirs/debounce-distinct.directive';
+import { FiltersComponent } from './comps/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DebounceDistinctDirective } from './dirs/debounce-distinct.directive';
     UsersCounterComponent,
     AddPostComponent,
     FilterByFieldPipe,
-    DebounceDistinctDirective
+    DebounceDistinctDirective,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
