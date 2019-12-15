@@ -14,6 +14,13 @@ export class BaseService<T> {
     this.api = "https://jsonplaceholder.typicode.com/" + this.api
     this.http.get<T[]>(this.api).subscribe(arr => {
       console.log('data arrived for api of ' + api);
+
+      //add items from ls
+      let dynamicItems:[] = localStorage[this.api] ? JSON.parse(localStorage[this.api]) : [];
+      if (dynamicItems.length > 0) {
+        arr = arr.concat(dynamicItems)
+      }
+      
       this.dataSubject.next(arr)
     })
   }
@@ -22,13 +29,13 @@ export class BaseService<T> {
     let dynamicItems = localStorage[this.api] ? 
       JSON.parse(localStorage[this.api]) : [];
 
-    let apiItems = this.dataSubject.value
+    let AllItems = this.dataSubject.value
 
     dynamicItems.push(item)
     localStorage[this.api] = JSON.stringify(dynamicItems)
 
-    apiItems.push(item)
-    this.dataSubject.next(apiItems)
+    AllItems.push(item)
+    this.dataSubject.next(AllItems)
   }
   
 }
