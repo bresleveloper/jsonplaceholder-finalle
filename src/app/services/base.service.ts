@@ -31,6 +31,11 @@ export class BaseService<T> {
 
     let AllItems = this.dataSubject.value
 
+    if (AllItems[0]['id']) {
+      let lastId = Math.max.apply(Math, AllItems.map(__item => __item['id']))
+      item['id'] = ++lastId;
+    }
+
     dynamicItems.push(item)
     localStorage[this.api] = JSON.stringify(dynamicItems)
 
