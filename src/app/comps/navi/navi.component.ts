@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 
 @Component({
   selector: 'app-navi',
@@ -8,14 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NaviComponent implements OnInit {
 
-  constructor(private activatedRoute:ActivatedRoute) { }
+  constructor(private router: Router) { }
   
   title:string
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe(x =>{
-      this.title = x.title
-    })
+    this.router.events.subscribe((data) => {
+      if (data instanceof RoutesRecognized) {
+        this.title = data.state.root.firstChild.data.title;
+      }
+    });
   }
-
 }
